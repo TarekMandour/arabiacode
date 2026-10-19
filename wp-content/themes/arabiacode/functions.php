@@ -357,3 +357,4 @@ function the_breadcrumb() {
 
 /** Register dynamic company content types. */
 require_once get_template_directory() . '/inc/dynamic-content.php';
+require_once get_template_directory() . '/inc/page-builder.php';
