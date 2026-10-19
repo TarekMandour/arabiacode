@@ -9,29 +9,29 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="footer_logo">
-                                <a href="index.html" class="d-inline-block h-100">
-                                    <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo-shadow.png" alt="logo" class="logo">
-                                    <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo.png" alt="logo" class="main-logo-img logo">
+                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="d-inline-block h-100">
+                                    <img src="<?php echo esc_url( of_get_option( 'footerlogo', get_template_directory_uri() . '/assets/images/logo/logo-shadow.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo">
+                                    <img src="<?php echo esc_url( of_get_option( 'logo', get_template_directory_uri() . '/assets/images/logo/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="main-logo-img logo">
                                 </a>
                             </div>
                         </div>
                         <!-- Contact Information -->
                         <div class="col-sm-8 col-md-6 col-lg-3 mb-lg-0 mb-3 align-self-center">
                             <h1 class="title widget_title"><i data-feather="map-pin"></i> العنوان</h1>
-                            <p class="vm_para footer_l">الأسكندريه – سيدي جابر – ش ابوقير</p>
+                            <p class="vm_para footer_l"><?php echo esc_html( of_get_option( 'address', 'الأسكندريه – سيدي جابر – ش ابوقير' ) ); ?></p>
                             <h1 class="title widget_title"><i data-feather="mail"></i> البريد الالكتروني </h1>
-                            <a href="mailto:info@arabiacode.com" class=" contact d-block">
+                            <a href="mailto:<?php echo esc_attr( of_get_option( 'email', 'info@arabiacode.com' ) ); ?>" class=" contact d-block">
                                 <p class="vm_para footer_l">
-                                    info@arabiacode.com
+                                    <?php echo esc_html( of_get_option( 'email', 'info@arabiacode.com' ) ); ?>
                                 </p>
                             </a>
-                            <a href="mailto:tarek.mandourr@gmail.com" class=" contact d-block">
+                            <a href="mailto:<?php echo esc_attr( of_get_option( 'email2', 'tarek.mandourr@gmail.com' ) ); ?>" class=" contact d-block">
                                 <p class="vm_para footer_l">
-                                    tarek.mandourr@gmail.com
+                                    <?php echo esc_html( of_get_option( 'email2', 'tarek.mandourr@gmail.com' ) ); ?>
                                 </p>
                             </a>
 
-                            <a href="tel:+201006287379" class="title contact d-block"><i data-feather="phone"></i> 201006287379+</a>
+                            <?php $ac_phone = of_get_option( 'phone', '201006287379+' ); ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone ) ); ?>" class="title contact d-block"><i data-feather="phone"></i> <?php echo esc_html( $ac_phone ); ?></a>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-3 mb-lg-0 mb-3 align-self-center">
                             <h1 class="title widget_title">روابط مهمة</h1>
@@ -55,7 +55,7 @@
                     <div class="row align-items-center">
                         <div class="col-sm-12 col-lg-12 order-sm-2 order-lg-2">
                             <p class="vm_para footer_l mb-0 text-center">
-                                <span>Copyright © 2024</span>
+                                <span><?php echo esc_html( of_get_option( 'copy_right', 'Copyright © ' . gmdate( 'Y' ) ) ); ?></span>
                             </p>
                         </div>
                     </div>
