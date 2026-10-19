@@ -326,6 +326,36 @@
                 </div>
                 <div class="swiper portfolio_slider_02">
                     <div class="swiper-wrapper">
+                        <?php
+                        $arabiacode_projects = new WP_Query( array(
+                            'post_type'      => 'ac_project',
+                            'post_status'    => 'publish',
+                            'posts_per_page' => 6,
+                            'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+                        ) );
+                        if ( $arabiacode_projects->have_posts() ) :
+                        ?>
+                        <div class="vm_grid style_02 swiper-slide">
+                            <?php
+                            $project_index = 0;
+                            $project_fallback_images = array( '1.webp', '2.webp', '4.webp', '5.webp', '6.webp', '7.webp' );
+                            while ( $arabiacode_projects->have_posts() ) : $arabiacode_projects->the_post();
+                                $project_index++;
+                                $project_image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+                                if ( ! $project_image ) {
+                                    $project_image = get_template_directory_uri() . '/assets/images/portfolio/' . $project_fallback_images[ $project_index - 1 ];
+                                }
+                            ?>
+                            <div class="grid_item grid_item-<?php echo esc_attr( $project_index ); ?>">
+                                <img src="<?php echo esc_url( $project_image ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="portfolio_img">
+                                <a href="<?php the_permalink(); ?>" class="portfolio_link d-flex align-items-center justify-content-center" aria-label="<?php echo esc_attr( get_the_title() ); ?>">
+                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/icons/download_icon.svg' ); ?>" alt="">
+                                </a>
+                            </div>
+                            <?php endwhile; wp_reset_postdata(); ?>
+                        </div>
+                        <?php else : ?>
+                    <div class="swiper-wrapper">
                         <!-- Slider 01 -->
                         <div class="vm_grid style_02 swiper-slide">
                             <div class="grid_item grid_item-1">
@@ -366,6 +396,7 @@
                             </div>
                         </div>
                     </div>
+                        <?php endif; ?>
 
                 </div>
             </div>  
