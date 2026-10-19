@@ -140,32 +140,42 @@
                         </li>
                     </ul>
                 </div>
-                <!-- social sharea area -->
-                <!-- <div class="social_share">
-                    <p class="social_share__title">سوشيال ميديا</p>
+                <!-- Social media links from theme settings -->
+                <?php
+                $ac_social_links = array(
+                    'facebook'  => array( 'label' => 'Facebook', 'icon' => 'facebook' ),
+                    'instagram' => array( 'label' => 'Instagram', 'icon' => 'instagram' ),
+                    'twitter'   => array( 'label' => 'Twitter', 'icon' => 'twitter' ),
+                    'linkedin'  => array( 'label' => 'LinkedIn', 'icon' => 'linkedin' ),
+                    'google'    => array( 'label' => 'YouTube', 'icon' => 'youtube' ),
+                );
+                $ac_has_social_links = false;
+                foreach ( $ac_social_links as $ac_social_key => $ac_social ) {
+                    if ( of_get_option( $ac_social_key ) ) {
+                        $ac_has_social_links = true;
+                        break;
+                    }
+                }
+                ?>
+                <?php if ( $ac_has_social_links ) : ?>
+                <div class="social_share">
+                    <p class="social_share__title">تابعنا على</p>
                     <ul class="social_share__list d-flex align-items-center m-0 p-0">
-                        <li class="facebook d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="facebook"></i>
+                        <?php foreach ( $ac_social_links as $ac_social_key => $ac_social ) :
+                            $ac_social_url = trim( (string) of_get_option( $ac_social_key ) );
+                            if ( ! $ac_social_url ) {
+                                continue;
+                            }
+                        ?>
+                        <li class="<?php echo esc_attr( $ac_social_key ); ?> d-flex align-items-center justify-content-center">
+                            <a href="<?php echo esc_url( $ac_social_url ); ?>" class="social_share__list_link" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $ac_social['label'] ); ?>">
+                                <i data-feather="<?php echo esc_attr( $ac_social['icon'] ); ?>"></i>
                             </a>
                         </li>
-                        <li class="instagram d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="instagram"></i>
-                            </a>
-                        </li>
-                        <li class="linkedin d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="twitter"></i>
-                            </a>
-                        </li>
-                        <li class="linkedin d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="linkedin"></i>
-                            </a>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
-                </div> -->
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- End Popup Mobile Menu  -->
