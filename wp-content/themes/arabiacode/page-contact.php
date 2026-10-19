@@ -81,6 +81,7 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
                         <?php echo $error; ?>
                         
                         <form class="vm_form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST">
+                            <?php wp_nonce_field( 'arabiacode_contact_form', 'contact_form_nonce' ); ?>
                             <div class="d-block d-sm-flex align-items-center justify-content-between gap-2 gap-lg-4 wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                                 <label for="name" class="vm_para w-100">
                                     الاسم بالكامل
