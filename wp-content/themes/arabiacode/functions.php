@@ -280,7 +280,6 @@ function the_breadcrumb() {
         echo '</ol>';
 	}
 } 
-?>
 
 /** Register dynamic company content types. */
 require_once get_template_directory() . '/inc/dynamic-content.php';
