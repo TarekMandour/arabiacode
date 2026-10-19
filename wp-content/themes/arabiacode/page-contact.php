@@ -21,7 +21,8 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
 <?php get_header(); ?>
 
     <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb_wrap" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/breadcrumb/1.jpg')">
+    <?php $ac_breadcrumb = of_get_option( 'breadcrumb', get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>
+    <div class="breadcrumb_wrap" style="background-image: url('<?php echo esc_url( $ac_breadcrumb ); ?>')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -52,21 +53,21 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
                     <div class="contact__inner text-lg-center wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
                         <h3 class="contact_title">رقم الهاتف</h3>
                         <p class="vm_para">نحن مهتمون بالعمل معا</p>
-                        <p class="contact_info"><a href="tel:201006287379+" class="txt_black">201006287379+</a></p>
-                        <p class="contact_info"><a href="tel:201008233821+" class="txt_black">201008233821+</a></p>
+                        <p class="contact_info"><?php $ac_phone = of_get_option( 'phone', '201006287379+' ); ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone ) ); ?>" class="txt_black"><?php echo esc_html( $ac_phone ); ?></a></p>
+                        <p class="contact_info"><?php $ac_phone2 = of_get_option( 'phone2', '201008233821+' ); ?><?php if ( $ac_phone2 ) : ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone2 ) ); ?>" class="txt_black"><?php echo esc_html( $ac_phone2 ); ?></a><?php endif; ?></p>
                     </div>
                     <!-- Single Info Box-->
                     <div class="contact__inner text-lg-center wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                         <h3 class="contact_title">البريد الالكتروني</h3>
                         <p class="vm_para">هل لديك مشروع في ذهنك؟ أرسل رسالة.</p>
-                        <p class="contact_info"><a href="mailto:info@arabiacode.com" class="txt_black">info@arabiacode.com</a></p>
-                        <p class="contact_info"><a href="mailto:tarek.mandourr@gmail.com" class="txt_black">tarek.mandourr@gmail.com</a></p>
+                        <p class="contact_info"><?php $ac_email = of_get_option( 'email', 'info@arabiacode.com' ); ?><a href="mailto:<?php echo esc_attr( $ac_email ); ?>" class="txt_black"><?php echo esc_html( $ac_email ); ?></a></p>
+                        <p class="contact_info"><?php $ac_email2 = of_get_option( 'email2', 'tarek.mandourr@gmail.com' ); ?><?php if ( $ac_email2 ) : ?><a href="mailto:<?php echo esc_attr( $ac_email2 ); ?>" class="txt_black"><?php echo esc_html( $ac_email2 ); ?></a><?php endif; ?></p>
                     </div>
                     <!-- Single Info Box-->
                     <div class="contact__inner text-lg-center wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s">
                         <h3 class="contact_title">العنوان</h3>
                         <p class="vm_para">قم بزيارة مقرنا الرئيسي.</p>
-                        <p class="contact_info">الأسكندريه – سيدي جابر – ش ابوقير</p>
+                        <p class="contact_info"><?php echo esc_html( of_get_option( 'address', 'الأسكندريه – سيدي جابر – ش ابوقير' ) ); ?></p>
                     </div>
                 </div>
 
@@ -80,7 +81,8 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
                         <?php echo $success; ?>
                         <?php echo $error; ?>
                         
-                        <form class="vm_form" action="https://arabiacode.com/wp-admin/admin-post.php" method="POST">
+                        <form class="vm_form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST">
+                            <?php wp_nonce_field( 'arabiacode_contact_form', 'contact_form_nonce' ); ?>
                             <div class="d-block d-sm-flex align-items-center justify-content-between gap-2 gap-lg-4 wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                                 <label for="name" class="vm_para w-100">
                                     الاسم بالكامل

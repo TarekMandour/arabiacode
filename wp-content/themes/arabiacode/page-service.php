@@ -6,7 +6,8 @@
 <?php get_header(); ?>
 
     <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb_wrap" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/breadcrumb/1.jpg')">
+    <?php $ac_breadcrumb = of_get_option( 'breadcrumb', get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>
+    <div class="breadcrumb_wrap" style="background-image: url('<?php echo esc_url( $ac_breadcrumb ? $ac_breadcrumb : get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -37,6 +38,36 @@
                         <h2 class="section_title mt-2 move-line-3d">خدماتنا المميزة</h2>
                     </div>
                 </div>
+                <?php
+                $arabiacode_services = new WP_Query( array(
+                    'post_type'      => 'ac_service',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+                ) );
+                if ( $arabiacode_services->have_posts() ) :
+                ?>
+                <div class="row row-gap-3 mt-4">
+                    <?php $service_index = 0; while ( $arabiacode_services->have_posts() ) : $arabiacode_services->the_post(); $service_index++; ?>
+                    <div class="col-sm-6 col-lg-4 d-flex justify-content-center fade-slide bottom" data-cs-delay="<?php echo esc_attr( min( 0.3 * $service_index, 1.2 ) ); ?>">
+                        <div class="vm_service">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <?php the_post_thumbnail( 'medium', array( 'class' => 'h75', 'alt' => esc_attr( get_the_title() ) ) ); ?>
+                            <?php endif; ?>
+                            <div class="content">
+                                <h2 class="title">
+                                    <a href="<?php the_permalink(); ?>" class="position-relative">
+                                        <?php the_title(); ?>
+                                        <i data-feather="arrow-up-right"></i>
+                                    </a>
+                                </h2>
+                                <p class="vm_para"><?php echo esc_html( get_the_excerpt() ? get_the_excerpt() : wp_trim_words( wp_strip_all_tags( get_the_content() ), 28 ) ); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endwhile; wp_reset_postdata(); ?>
+                </div>
+                <?php else : ?>
                 <div class="row row-gap-3 mt-4">
                     <!-- Single Services -->
                     <div class="col-sm-6 col-lg-4 d-flex justify-content-center fade-slide bottom" data-cs-delay="0.3">
@@ -186,6 +217,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- End Services One -->

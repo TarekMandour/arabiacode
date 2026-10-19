@@ -3,13 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Arabiacode</title>
-        <meta name="keywords" content="Arabiacode">
-        <meta name="description" content="Arabiacode">
+
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo('template_directory'); ?>/assets/images/logo/fav.png">
+        <?php $ac_favicon = of_get_option( 'fav_ico' ); ?><link rel="shortcut icon" href="<?php echo esc_url( $ac_favicon ? $ac_favicon : get_template_directory_uri() . '/assets/images/logo/fav.png' ); ?>">
 
         <!-- CSS -->
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/vendor/bootstrap.min.css">
@@ -30,7 +28,7 @@
                     <div class="header__left">
                         <div class="header__logo">
                             <a href="<?php echo get_option('home'); ?>">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo.png" alt="logo" class="logo">
+                                <img src="<?php echo esc_url( of_get_option( 'logo', get_template_directory_uri() . '/assets/images/logo/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo">
                             </a>
                         </div>
                     </div>
@@ -44,6 +42,9 @@
                              <?php 
                                 global $wp;
                              ?>
+                            <?php if ( has_nav_menu( 'main' ) ) : ?>
+                            <?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => false, 'menu_class' => 'primary-menu nav nav-pills', 'fallback_cb' => false, 'depth' => 3 ) ); ?>
+                            <?php else : ?>
                             <ul class="primary-menu nav nav-pills">
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == '') { echo 'active'; } ?>" href="<?php echo get_option('home'); ?>">الرئيسية</a></li>
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'about-us') { echo 'active'; } ?>" href="<?php echo get_option('home').'/about-us'; ?>">نبذة عنا</a></li>
@@ -59,6 +60,7 @@
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'careers') { echo 'active'; } ?>" href="<?php echo get_option('home').'/careers'; ?>">التوظيف</a></li>
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'contact-us') { echo 'active'; } ?>" href="<?php echo get_option('home').'/contact-us'; ?>">تواصل معنا</a></li>
                             </ul>
+                            <?php endif; ?>
                             <!-- End Mainmenu Nav -->
                         </nav>
                     </div>
@@ -84,7 +86,7 @@
                 <div class="menu__top">
                     <div class="menu_header d-flex align-items-center justify-content-between">
                         <a class="logo" href="<?php echo get_option('home'); ?>">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo.png" alt="logo_white">
+                            <img src="<?php echo esc_url( of_get_option( 'logo2', of_get_option( 'logo', get_template_directory_uri() . '/assets/images/logo/logo.png' ) ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         </a>
                         <div class="close_button d-flex align-items-center justify-content-center">
                             <button class="close">
@@ -95,6 +97,9 @@
                 </div>
                 <div class="menu__content mobile_menu_nav">
                     <!-- Navigation Menu -->
+                    <?php if ( has_nav_menu( 'mobile' ) ) : ?>
+                    <?php wp_nav_menu( array( 'theme_location' => 'mobile', 'container' => false, 'menu_class' => 'menu_list d-flex d-lg-none flex-column', 'fallback_cb' => false, 'depth' => 3 ) ); ?>
+                    <?php else : ?>
                     <ul class="menu_list d-flex d-lg-none flex-column">
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home'); ?>">الرئيسية</a></li>
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/about-us'; ?>">نبذة عنا</a></li>
@@ -110,54 +115,67 @@
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/careers'; ?>">التوظيف</a></li>
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/contact-us'; ?>">تواصل معنا</a></li>
                     </ul>
+                    <?php endif; ?>
                     <!-- About Company -->
                     <ul class="address d-none d-lg-block">
                         <li>
                             <div><i data-feather="map-pin"></i></div>
-                            <p class="text-white mb-0">الأسكندريه – سيدي جابر – ش ابوقير.</p>
+                            <p class="text-white mb-0"><?php echo esc_html( of_get_option( 'address', 'الأسكندريه – سيدي جابر – ش ابوقير.' ) ); ?></p>
                         </li>
                         <li>
                             <div><i data-feather="phone"></i></div>
                             <div class="d-flex flex-column">
-                                <a href="tel:+201006287379">201006287379+</a>
-                                <a href="tel:+201008233821">201008233821+</a>
+                                <?php $ac_phone = of_get_option( 'phone', '201006287379+' ); $ac_phone2 = of_get_option( 'phone2', '201008233821+' ); ?>
+                                <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone ) ); ?>"><?php echo esc_html( $ac_phone ); ?></a>
+                                <?php if ( $ac_phone2 ) : ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone2 ) ); ?>"><?php echo esc_html( $ac_phone2 ); ?></a><?php endif; ?>
                             </div>
                         </li>
                         <li>
                             <div><i data-feather="mail"></i></div>
                             <div class="d-flex flex-column">
-                                <a href="mailto:info@arabiacode.com"><span class="">info@arabiacode.com</span></a>
-                                <a href="mailto:tarek.mandourr@gmail.com"><span class="">tarek.mandourr@gmail.com</span></a>
+                                <?php $ac_email = of_get_option( 'email', 'info@arabiacode.com' ); $ac_email2 = of_get_option( 'email2', 'tarek.mandourr@gmail.com' ); ?>
+                                <a href="mailto:<?php echo esc_attr( $ac_email ); ?>"><span><?php echo esc_html( $ac_email ); ?></span></a>
+                                <?php if ( $ac_email2 ) : ?><a href="mailto:<?php echo esc_attr( $ac_email2 ); ?>"><span><?php echo esc_html( $ac_email2 ); ?></span></a><?php endif; ?>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <!-- social sharea area -->
-                <!-- <div class="social_share">
-                    <p class="social_share__title">سوشيال ميديا</p>
+                <!-- Social media links from theme settings -->
+                <?php
+                $ac_social_links = array(
+                    'facebook'  => array( 'label' => 'Facebook', 'icon' => 'facebook' ),
+                    'instagram' => array( 'label' => 'Instagram', 'icon' => 'instagram' ),
+                    'twitter'   => array( 'label' => 'Twitter', 'icon' => 'twitter' ),
+                    'linkedin'  => array( 'label' => 'LinkedIn', 'icon' => 'linkedin' ),
+                    'google'    => array( 'label' => 'YouTube', 'icon' => 'youtube' ),
+                );
+                $ac_has_social_links = false;
+                foreach ( $ac_social_links as $ac_social_key => $ac_social ) {
+                    if ( of_get_option( $ac_social_key ) ) {
+                        $ac_has_social_links = true;
+                        break;
+                    }
+                }
+                ?>
+                <?php if ( $ac_has_social_links ) : ?>
+                <div class="social_share">
+                    <p class="social_share__title">تابعنا على</p>
                     <ul class="social_share__list d-flex align-items-center m-0 p-0">
-                        <li class="facebook d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="facebook"></i>
+                        <?php foreach ( $ac_social_links as $ac_social_key => $ac_social ) :
+                            $ac_social_url = trim( (string) of_get_option( $ac_social_key ) );
+                            if ( ! $ac_social_url ) {
+                                continue;
+                            }
+                        ?>
+                        <li class="<?php echo esc_attr( $ac_social_key ); ?> d-flex align-items-center justify-content-center">
+                            <a href="<?php echo esc_url( $ac_social_url ); ?>" class="social_share__list_link" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $ac_social['label'] ); ?>">
+                                <i data-feather="<?php echo esc_attr( $ac_social['icon'] ); ?>"></i>
                             </a>
                         </li>
-                        <li class="instagram d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="instagram"></i>
-                            </a>
-                        </li>
-                        <li class="linkedin d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="twitter"></i>
-                            </a>
-                        </li>
-                        <li class="linkedin d-flex align-items-center justify-content-center">
-                            <a href="javascript:;" class="social_share__list_link">
-                                <i data-feather="linkedin"></i>
-                            </a>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
-                </div> -->
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- End Popup Mobile Menu  -->

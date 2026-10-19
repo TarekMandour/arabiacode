@@ -21,7 +21,8 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
 <?php get_header(); ?>
 
     <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb_wrap" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/breadcrumb/1.jpg')">
+    <?php $ac_breadcrumb = of_get_option( 'breadcrumb', get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>
+    <div class="breadcrumb_wrap" style="background-image: url('<?php echo esc_url( $ac_breadcrumb ); ?>')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -57,7 +58,8 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
                         <?php echo $success; ?>
                         <?php echo $error; ?>
                         
-                        <form class="vm_form" action="https://arabiacode.com/wp-admin/admin-post.php" method="POST">
+                        <form class="vm_form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST" enctype="multipart/form-data">
+                            <?php wp_nonce_field( 'arabiacode_job_form', 'job_form_nonce' ); ?>
                             <div class="d-block d-sm-flex align-items-center justify-content-between gap-2 gap-lg-4 wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                                 <label for="name" class="vm_para w-100">
                                     الاسم بالكامل
@@ -80,7 +82,8 @@ if (isset($_GET['mailer']) && $_GET['mailer'] != '') {
                             </div>
                             <label for="message" class="vm_para wow animated fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">
                                 ارفع ال C.V
-                                <input type="file" name="file" class="" />
+                                <input type="file" id="cv" name="file" class="" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                    <small>PDF أو DOC أو DOCX، بحد أقصى 5 ميجابايت.</small>
                             </label>
 
                             <input type="hidden" name="action" value="submit_job_form">
