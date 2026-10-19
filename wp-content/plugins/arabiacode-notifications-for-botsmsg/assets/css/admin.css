@@ -1,0 +1,83 @@
+.botsmsg-container { max-width: 1100px; }
+
+.botsmsg-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.botsmsg-tabs {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    border: none;
+    background: #eee;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: #25D366;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.botsmsg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.botsmsg-grid input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.botsmsg-card textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.botsmsg-btn {
+    background: #25D366;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#loader { display: none; }
+
+.botsmsg-switches {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.botsmsg-switches label {
+    background: #f7f7f7;
+    padding: 8px 12px;
+    border-radius: 8px;
+}

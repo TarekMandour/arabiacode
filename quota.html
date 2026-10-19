@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عرض فني ومالي | بوابة الملفات الآمنة برموز QR - اربيا كود</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+<style>
+:root{--primary:#e82b4b;--dark:#222;--gray:#667085;--light:#f8f8f8;--border:#e9e9e9;--pink:#fff5f7;--navy:#183449}
+*{box-sizing:border-box}
+body{margin:0;padding:32px 16px;background:#f2f3f5;font-family:'Tajawal',sans-serif;color:var(--dark);line-height:1.85}
+a{color:inherit}
+.document{max-width:980px;margin:auto;background:#fff;padding:52px 58px;box-shadow:0 5px 30px rgba(0,0,0,.08)}
+.header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;border-bottom:3px solid var(--primary);padding-bottom:24px;margin-bottom:30px}
+.brand img{max-width:205px;max-height:65px;object-fit:contain}
+.brand-name{font-size:26px;font-weight:800;color:var(--primary)}
+.company-subtitle{font-size:13px;color:var(--gray);margin-top:4px}
+.document-title{text-align:left}
+.document-title h1{font-size:27px;font-weight:800;margin:0;line-height:1.4}
+.document-title p{font-size:13px;color:var(--gray);margin:5px 0}
+.cover{background:linear-gradient(135deg,#fff 0%,#fff5f7 100%);border:1px solid #f5dfe4;border-radius:12px;padding:27px;margin-bottom:28px}
+.kicker{color:var(--primary);font-size:14px;font-weight:800}
+.cover h2{font-size:29px;font-weight:800;line-height:1.45;margin:8px 0 12px}
+.cover p{font-size:16px;color:#4b5563;margin:0}
+.section{margin:30px 0;break-inside:avoid}
+.section-title{color:var(--primary);font-size:20px;font-weight:800;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.info-item{background:var(--light);padding:13px 16px;border-radius:7px;border:1px solid #f0f0f0}
+.info-label{font-size:12px;color:var(--gray);margin-bottom:3px}
+.info-value{font-weight:700;font-size:15px}
+.lead{font-size:15px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feature{padding:14px 16px;background:#fafafa;border:1px solid var(--border);border-right:4px solid var(--primary);border-radius:7px;break-inside:avoid}
+.feature b{display:block;font-size:15px;margin-bottom:3px}
+.feature span{font-size:13px;color:#59616b}
+.check-list{list-style:none;padding:0;margin:0}
+.check-list li{position:relative;padding:8px 28px 8px 0;border-bottom:1px solid #f0f0f0}
+.check-list li:last-child{border-bottom:0}
+.check-list li:before{content:"✓";position:absolute;right:0;color:var(--primary);font-weight:800;font-size:17px}
+.table{font-size:14px;vertical-align:middle}
+.table thead th{background:var(--navy);color:#fff;font-weight:700;border-color:var(--navy)}
+.table td,.table th{padding:11px 12px;border-color:#e7e7e7}
+.pill{display:inline-block;background:var(--pink);color:var(--primary);border:1px solid #f5d9df;border-radius:50px;padding:4px 11px;font-size:12px;font-weight:700}
+.price-box{border:2px solid var(--primary);border-radius:10px;overflow:hidden}
+.price-head{background:var(--primary);color:#fff;text-align:center;padding:15px;font-size:19px;font-weight:800}
+.price-body{padding:20px 24px}
+.price-row{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.price-row:last-of-type{border-bottom:0}
+.price-label{font-weight:500}
+.price-value{font-weight:800;color:var(--primary);font-size:19px;white-space:nowrap}
+.total-row{background:var(--pink);padding:15px 17px;border-radius:7px;margin-top:14px}
+.total-row .price-value{font-size:25px}
+.note{background:#f7f7f7;border-right:4px solid #a0a0a0;border-radius:5px;padding:13px 16px;color:#555;font-size:13px}
+.callout{background:#f8fbfd;border-right:4px solid var(--navy);padding:15px 18px;border-radius:6px}
+.footer{margin-top:38px;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:25px}
+.footer-title{font-weight:800;color:var(--primary);margin-bottom:5px}
+.footer p{margin:2px 0;color:var(--gray);font-size:13px}
+.signature{width:220px;text-align:center;padding-top:12px;flex-shrink:0}
+.signature-line{border-top:1px solid #999;margin-top:42px;padding-top:7px;color:var(--gray);font-size:13px}
+.actions{max-width:980px;margin:0 auto 14px;display:flex;justify-content:flex-end;gap:8px}
+.actions button{border:0;border-radius:7px;background:var(--primary);color:#fff;padding:10px 16px;font-family:inherit;font-weight:700}
+.actions button.secondary{background:#333}
+.small-muted{font-size:12px;color:var(--gray)}
+@media(max-width:700px){
+ body{padding:10px}.document{padding:26px 18px}.header{display:block}.document-title{text-align:right;margin-top:20px}
+ .info-grid,.feature-grid{grid-template-columns:1fr}.footer{display:block}.signature{width:100%;margin-top:20px}
+ .cover h2{font-size:24px}.price-row{align-items:flex-start;flex-direction:column;gap:3px}
+}
+@page{size:A4;margin:14mm}
+@media print{
+ body{background:#fff;padding:0;font-size:11pt}
+ .actions{display:none!important}.document{max-width:none;padding:0;box-shadow:none}
+ .section{break-inside:avoid}.feature,.info-item,.price-box{break-inside:avoid}
+ .page-break{break-before:page}
+ a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="actions">
+  <button onclick="window.print()">طباعة / حفظ PDF</button>
+  <button class="secondary"><a href="https://arabiacode.com" style="text-decoration: none;">أربيـا كــود</a></button>
+</div>
+<main class="document">
+<header class="header">
+  <div class="brand">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABICAYAAABMb8iNAAAACXBIWXMAAAsTAAALEwEAmpwYAAAG2mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBSaWdodHM9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9yaWdodHMvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcFJpZ2h0czpNYXJrZWQ9IkZhbHNlIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6NkQ3N0Q4ODI1OUY1RTMxMThBRUZDNENEQjhFMEFDQ0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTMxNzc3NTY2M0NGMTFFRkIxQkFFNjgyRDVEMTU3QTYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NGFiODJjNWEtMWJhMC01MDQ5LTkxZjItMDk5ZTQyOWFkMTM5IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDI2LTA4LTA4VDEzOjI0OjM2KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNi0wOC0wOFQxMzoyNzo1OCswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNi0wOC0wOFQxMzoyNzo1OCswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjhlMzc2OTk5LTQyZDctNDE0Zi1iMGFkLWJhYzU1NDJkOTVlMyIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmRhNGU5MTkwLTk2ZWQtYjg0My04ZDRjLWU3N2NiZmU1MjI0MyIvPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YWI4MmM1YS0xYmEwLTUwNDktOTFmMi0wOTllNDI5YWQxMzkiIHN0RXZ0OndoZW49IjIwMjYtMDgtMDhUMTM6Mjc6NTgrMDM6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHBob3Rvc2hvcDpEb2N1bWVudEFuY2VzdG9ycz4gPHJkZjpCYWc+IDxyZGY6bGk+eG1wLmRpZDo1MzE3Nzc1NjYzQ0YxMUVGQjFCQUU2ODJENUQxNTdBNjwvcmRmOmxpPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOkRvY3VtZW50QW5jZXN0b3JzPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94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" alt="ArabiaCode">
+    <div class="company-subtitle">حلول برمجية وتطوير الأنظمة</div>
+    <div class="small-muted">arabiacode.com</div>
+  </div>
+  <div class="document-title">
+    <h1>عرض فني ومالي</h1>
+    <p>بوابة الملفات الآمنة باستخدام رموز QR</p>
+    <p>مقدم إلى وزارة الداخلية – دولة الكويت</p>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="kicker">أربيـا كـود · عرض فني ومالي</div>
+  <h2>تطوير بوابة آمنة لإدارة الملفات والوصول إليها عبر رموز QR</h2>
+  <p>منظومة إلكترونية لإدارة مجموعات الملفات، وتنظيم صلاحيات الوصول، وتسهيل عرض الملفات وتنزيلها من خلال رموز QR ثابتة، مع لوحة تحكم إدارية وسجل للعمليات وإشعارات البريد الإلكتروني.</p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">1. بيانات العرض</h2>
+  <div class="info-grid">
+    <div class="info-item"><div class="info-label">الجهة المستفيدة</div><div class="info-value">وزارة الداخلية – دولة الكويت</div></div>
+    <div class="info-item"><div class="info-label">مقدم العرض</div><div class="info-value">أربيـا كــود</div></div>
+    <div class="info-item"><div class="info-label">مدة التنفيذ</div><div class="info-value">30 يوماً</div></div>
+    <div class="info-item"><div class="info-label">فترة الضمان</div><div class="info-value">3 أشهر من تاريخ التسليم النهائي</div></div>
+    <div class="info-item"><div class="info-label">التقنيات المعتمدة</div><div class="info-value">PHP · Laravel 13 · MySQL · Bootstrap</div></div>
+    <div class="info-item"><div class="info-label">لغة الواجهات</div><div class="info-value">العربية والإنجليزية مع دعم RTL</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">2. الملخص التنفيذي</h2>
+  <p class="lead">تتشرف أربيا كود بتقديم هذا العرض الفني والمالي لتطوير بوابة الكترونية آمنة تتيح للمستخدمين المصرح لهم الوصول إلى مجموعات الملفات وفق صلاحيات محددة، باستخدام رموز QR ثابتة. تهدف المنظومة إلى تبسيط تداول الملفات، وتحسين إدارة المستخدمين، ورفع مستوى التحكم في الوصول، وتوفير سجل واضح للعمليات الإدارية وعمليات الملفات.</p>
+  <div class="callout"><strong>مبدأ الوصول:</strong> رمز QR يوجّه المستخدم إلى مجموعة الملفات المحددة، لكنه لا يمنح صلاحية الوصول بمفرده. يشترط تسجيل الدخول والتحقق من صلاحيات المستخدم قبل عرض الملفات أو تنزيلها.</div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">3. نطاق العمل والوظائف الرئيسية</h2>
+  <div class="feature-grid">
+    <div class="feature"><b>إدارة المستخدمين</b><span>إنشاء الحسابات وتعديلها وتعطيلها وإدارة بيانات المستخدمين من خلال المسؤول، دون إتاحة التسجيل العام.</span></div>
+    <div class="feature"><b>إدارة مجموعات الملفات</b><span>إنشاء مجموعات الملفات وتنظيمها وإضافة الملفات إليها أو حذفها وإدارتها من لوحة التحكم.</span></div>
+    <div class="feature"><b>رموز QR ثابتة</b><span>إنشاء رمز QR ثابت لكل مجموعة ملفات، بحيث لا يتغير الرمز عند إضافة الملفات أو حذفها من المجموعة.</span></div>
+    <div class="feature"><b>الصلاحيات والتحكم بالوصول</b><span>تحديد المستخدمين المصرح لهم بكل مجموعة، والتحقق من الصلاحيات عند فتح الروابط أو تنزيل الملفات.</span></div>
+    <div class="feature"><b>رفع الملفات وتنزيلها</b><span>رفع عدة ملفات، وعرض بياناتها، وتنزيل الملفات وفق الصلاحيات والقيود المعتمدة.</span></div>
+    <div class="feature"><b>الإشعارات البريدية</b><span>إرسال إشعارات للمسؤولين أو المستخدمين المصرح لهم، مع روابط تتطلب تسجيل الدخول، وإتاحة إعادة إرسال الرسائل عند الحاجة.</span></div>
+    <div class="feature"><b>سجل العمليات</b><span>تسجيل العمليات المهمة، بما فيها إدارة المستخدمين والصلاحيات ورفع الملفات وتنزيلها وحذفها وإرسال الإشعارات.</span></div>
+    <div class="feature"><b>إعدادات الملفات</b><span>التحقق من أنواع الملفات المسموح بها وحدود أحجام الملفات، وفق القيم التي تعتمدها الجهة.</span></div>
+    <div class="feature"><b>النسخ الاحتياطي والاستعادة</b><span>إعداد آلية نسخ احتياطي لقاعدة البيانات والملفات، مع توثيق خطوات الاستعادة ضمن بيئة الاستضافة المعتمدة.</span></div>
+    <div class="feature"><b>واجهة متجاوبة ومتعددة اللغات</b><span>تصميم متجاوب للأجهزة المكتبية واللوحية والهواتف، مع واجهة عربية وإنجليزية ودعم اتجاه الكتابة المناسب.</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">4. المواصفات الفنية والأمنية</h2>
+  <ul class="check-list">
+    <li><strong>Backend:</strong> تطوير النظام باستخدام PHP وLaravel 13.</li>
+    <li><strong>قاعدة البيانات:</strong> MySQL لتخزين بيانات المستخدمين والصلاحيات ومجموعات الملفات وسجل العمليات.</li>
+    <li><strong>تصميم الواجهات:</strong> Bootstrap مع دعم العربية والإنجليزية والتصميم المتجاوب.</li>
+    <li><strong>الاتصال المشفر:</strong> تشغيل الموقع عبر HTTPS باستخدام شهادة SSL/TLS على بيئة الإنتاج.</li>
+    <li><strong>حماية الحسابات:</strong> تطبيق سياسات مناسبة لكلمات المرور، والحد من محاولات تسجيل الدخول الفاشلة، وإدارة الجلسات بشكل آمن.</li>
+    <li><strong>التحقق من الصلاحيات:</strong> تطبيق فحص الصلاحيات على مستوى الخادم لكل طلب عرض أو تنزيل، وعدم الاعتماد على إخفاء الروابط في الواجهة فقط.</li>
+    <li><strong>حماية الملفات:</strong> التحقق من نوع الملف وحجمه، وتخزين الملفات بطريقة تمنع الوصول المباشر غير المصرح به.</li>
+    <li><strong>سجل التدقيق:</strong> حفظ سجل للعمليات المهمة بما يدعم المراجعة الإدارية.</li>
+    <li><strong>إعداد البريد:</strong> ربط النظام بخدمة البريد الإلكتروني التي توفرها أو تعتمدها الجهة.</li>
+  </ul>
+  <div class="note mt-3">تخضع متطلبات الأمن التفصيلية، وسياسات الاحتفاظ بالبيانات، ومكان الاستضافة، وآلية النسخ الاحتياطي، وأي متطلبات اعتماد حكومي إلى مراجعة واعتماد الجهة قبل بدء التنفيذ. لا يتضمن هذا العرض ادعاء الحصول على شهادة أو اعتماد أمني حكومي.</div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">5. مراحل التنفيذ والجدول الزمني</h2>
+  <p>المدة الإجمالية المقدرة للتنفيذ هي <strong>30 يوماً</strong> من تاريخ بدء المشروع وتوفير المتطلبات والوصولات اللازمة.</p>
+  <div class="table-responsive">
+  <table class="table table-bordered">
+    <thead><tr><th style="width:17%">المرحلة</th><th>الأعمال</th><th style="width:18%">المدة التقديرية</th></tr></thead>
+    <tbody>
+      <tr><td>المرحلة الأولى</td><td>تأكيد المتطلبات، اعتماد الصلاحيات وسيناريوهات الاستخدام، وتجهيز مخطط النظام.</td><td>5 أيام</td></tr>
+      <tr><td>المرحلة الثانية</td><td>تطوير إدارة الملفات ورموز QR والإشعارات وسجل العمليات.</td><td>15 يوماً</td></tr>
+      <tr><td>المرحلة الثالثة</td><td>استكمال الواجهتين العربية والإنجليزية، وضبط الاستجابة للأجهزة، وإعداد النسخ الاحتياطي.</td><td>5 أيام</td></tr>
+      <tr><td>المرحلة الرابعة</td><td>الاختبارات، معالجة الملاحظات ضمن النطاق، النشر والتدريب والتسليم.</td><td>5 أيام</td></tr>
+      <tr class="fw-bold"><td colspan="2">إجمالي مدة التنفيذ</td><td>30 يوماً</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small-muted">الجدول تقديري، وقد تتداخل بعض الأعمال. يعتمد الالتزام بالمدة على سرعة اعتماد المتطلبات وتوفير بيئة التشغيل وبيانات البريد الإلكتروني وملاحظات الجهة.</p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">6. التسليم والتدريب والضمان</h2>
+  <ul class="check-list">
+    <li>تسليم الكود المصدري للمشروع والملفات اللازمة للتشغيل وفق نطاق العمل المتفق عليه.</li>
+    <li>تسليم إعدادات التشغيل ودليل مختصر للإدارة والاستخدام والنشر والنسخ الاحتياطي.</li>
+    <li>تدريب المسؤولين والمستخدمين المعنيين على الوظائف الأساسية للنظام.</li>
+    <li>تنفيذ اختبارات الوظائف الأساسية والصلاحيات ومسارات رفع الملفات وعرضها وتنزيلها قبل التسليم.</li>
+    <li>ضمان لمدة ثلاثة أشهر من تاريخ التسليم النهائي لمعالجة الأخطاء البرمجية التي تقع ضمن نطاق العمل المعتمد.</li>
+    <li>لا يشمل الضمان الميزات الجديدة أو التعديلات الناتجة عن تغيير المتطلبات أو تدخلات أطراف أخرى أو الأعطال الناتجة عن بيئة خارج نطاق سيطرة مقدم العرض.</li>
+    <li>الدعم الفني والصيانة بعد انتهاء فترة الضمان خدمة اختيارية، ويتم تقديم عرض مالي مستقل لها عند الطلب.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2 class="section-title">7. العرض المالي</h2>
+  <div class="price-box">
+    <div class="price-head">التكلفة المالية للمشروع</div>
+    <div class="price-body">
+      <div class="price-row">
+        <div><div class="price-label">تطوير وتنفيذ النظام</div><div class="small-muted">تكلفة أساسية تشمل نطاق العمل الموضح في العرض</div></div>
+        <div class="price-value">$1,250 USD</div>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">حجز الدومين والخادم</div><div class="small-muted">تضاف فقط إذا لم توفر الجهة الدومين والاستضافة</div></div>
+        <div class="price-value">$200 USD</div>
+      </div>
+      <div class="total-row">
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+          <div><strong>إجمالي التطوير فقط</strong><div class="small-muted">ما يعادل تقريباً 389 دينار كويتي</div></div>
+          <div class="price-value">$1,250 USD</div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+          <div><strong>الإجمالي عند الحاجة للدومين والخادم</strong><div class="small-muted">ما يعادل تقريباً 450 دينار كويتي</div></div>
+          <div class="price-value">$1,450 USD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="note mt-3"><strong>ملاحظات مالية:</strong> لا تدخل تكاليف الخدمات الخارجية المدفوعة أو البريد الإلكتروني المدفوع أو أي متطلبات استضافة خاصة غير مذكورة صراحة ضمن السعر الأساسي. يتم الاتفاق على جدول الدفعات النهائي قبل بدء التنفيذ.</div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">8. الافتراضات والاستثناءات</h2>
+  <ul class="check-list">
+    <li>تقوم الجهة بتوفير متطلبات العمل والاعتمادات اللازمة في الوقت المناسب.</li>
+    <li>إذا كانت الاستضافة والدومين متوفرين لدى الجهة، فسيتم استخدامهما بعد التحقق من ملاءمتهما للمتطلبات الفنية.</li>
+    <li>إذا لم يتوفرا، يمكن تخصيص مبلغ إضافي تقديري قدره 200 دولار أمريكي للدومين والخادم، بعد تحديد مواصفات الخدمة المناسبة.</li>
+    <li>أي تكاملات مع أنظمة حكومية أخرى أو أنظمة هوية موحدة أو خدمات رسائل نصية أو تطبيق جوال مستقل ليست ضمن النطاق إلا إذا تم اعتمادها كتابةً.</li>
+    <li>تحدد الجهة أنواع الملفات المسموح بها، وأقصى حجم للملف، وسياسة الاحتفاظ بالملفات، ومتطلبات استضافة البيانات قبل التنفيذ.</li>
+    <li>أي تغيير جوهري في نطاق العمل بعد اعتماده قد يستلزم مراجعة المدة والتكلفة باتفاق الطرفين.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2 class="section-title">9. صلاحية العرض والاعتماد</h2>
+  <p>يُقدَّم هذا العرض كأساس للمناقشة والاعتماد، وتُثبت تفاصيل بدء التنفيذ وجدول الدفعات وبيئة التشغيل وأي متطلبات أمنية خاصة في اتفاق نهائي بين الطرفين.</p>
+  <div class="footer">
+    <div>
+      <div class="footer-title">أربيـا كــود</div>
+      <p>حلول برمجية وتطوير الأنظمة</p>
+      <p >arabiacode.com</p>
+    </div>
+    <div class="signature">
+      <strong>اعتماد الجهة المستفيدة</strong>
+      <div class="signature-line">الاسم والتوقيع والختم</div>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>
