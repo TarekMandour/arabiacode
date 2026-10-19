@@ -53,6 +53,8 @@ add_action( 'admin_post_submit_job_form', 'handle_job_form_submission' );
 
 
 
+add_theme_support( 'title-tag' );
+add_theme_support( 'custom-logo' );
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'video' ) );
 
 /* ------------------------------------------------------------------*/
@@ -279,3 +281,6 @@ function the_breadcrumb() {
 	}
 } 
 ?>
+
+/** Register dynamic company content types. */
+require_once get_template_directory() . '/inc/dynamic-content.php';
