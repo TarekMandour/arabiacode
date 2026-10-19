@@ -105,14 +105,36 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 // require_once('wp_bootstrap_navwalker.php');
 
-function add_class_to_all_menu_anchors( $atts ) {
-
-$atts['class'] = '';
-
-return $atts;
-
+function add_class_to_all_menu_anchors( $atts, $item, $args ) {
+    if ( isset( $args->theme_location ) && 'mobile' === $args->theme_location ) {
+        $atts['class'] = 'menu_list__link';
+    } else {
+        $atts['class'] = 'nav-link';
+    }
+    return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'add_class_to_all_menu_anchors', 1 );
+add_filter( 'nav_menu_link_attributes', 'add_class_to_all_menu_anchors', 10, 3 );
+
+function arabiacode_menu_item_classes( $classes, $item, $args, $depth ) {
+    if ( isset( $args->theme_location ) && 'mobile' === $args->theme_location ) {
+        $classes[] = 'menu_list__item';
+        if ( in_array( 'menu-item-has-children', $classes, true ) ) {
+            $classes[] = 'mobile_menu_item_has_children';
+        }
+    } else {
+        $classes[] = 'nav-item';
+        if ( in_array( 'menu-item-has-children', $classes, true ) ) {
+            $classes[] = 'menu_item_has_children';
+        }
+    }
+    return array_unique( $classes );
+}
+add_filter( 'nav_menu_css_class', 'arabiacode_menu_item_classes', 10, 4 );
+
+function arabiacode_menu_submenu_classes( $classes, $args, $depth ) {
+    return array( 'sub_menu' );
+}
+add_filter( 'nav_menu_submenu_css_class', 'arabiacode_menu_submenu_classes', 10, 3 );
 
 if ( function_exists( 'register_nav_menus' ) ) {
 	register_nav_menus(
