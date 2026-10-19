@@ -3,9 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Arabiacode</title>
-        <meta name="keywords" content="Arabiacode">
-        <meta name="description" content="Arabiacode">
+
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
