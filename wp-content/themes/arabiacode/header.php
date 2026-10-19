@@ -7,7 +7,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo('template_directory'); ?>/assets/images/logo/fav.png">
+        <?php $ac_favicon = of_get_option( 'fav_ico' ); ?><link rel="shortcut icon" href="<?php echo esc_url( $ac_favicon ? $ac_favicon : get_template_directory_uri() . '/assets/images/logo/fav.png' ); ?>">
 
         <!-- CSS -->
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/vendor/bootstrap.min.css">
@@ -28,7 +28,7 @@
                     <div class="header__left">
                         <div class="header__logo">
                             <a href="<?php echo get_option('home'); ?>">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo.png" alt="logo" class="logo">
+                                <img src="<?php echo esc_url( of_get_option( 'logo', get_template_directory_uri() . '/assets/images/logo/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo">
                             </a>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                 <div class="menu__top">
                     <div class="menu_header d-flex align-items-center justify-content-between">
                         <a class="logo" href="<?php echo get_option('home'); ?>">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/images/logo/logo.png" alt="logo_white">
+                            <img src="<?php echo esc_url( of_get_option( 'logo2', of_get_option( 'logo', get_template_directory_uri() . '/assets/images/logo/logo.png' ) ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         </a>
                         <div class="close_button d-flex align-items-center justify-content-center">
                             <button class="close">
@@ -112,20 +112,22 @@
                     <ul class="address d-none d-lg-block">
                         <li>
                             <div><i data-feather="map-pin"></i></div>
-                            <p class="text-white mb-0">الأسكندريه – سيدي جابر – ش ابوقير.</p>
+                            <p class="text-white mb-0"><?php echo esc_html( of_get_option( 'address', 'الأسكندريه – سيدي جابر – ش ابوقير.' ) ); ?></p>
                         </li>
                         <li>
                             <div><i data-feather="phone"></i></div>
                             <div class="d-flex flex-column">
-                                <a href="tel:+201006287379">201006287379+</a>
-                                <a href="tel:+201008233821">201008233821+</a>
+                                <?php $ac_phone = of_get_option( 'phone', '201006287379+' ); $ac_phone2 = of_get_option( 'phone2', '201008233821+' ); ?>
+                                <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone ) ); ?>"><?php echo esc_html( $ac_phone ); ?></a>
+                                <?php if ( $ac_phone2 ) : ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $ac_phone2 ) ); ?>"><?php echo esc_html( $ac_phone2 ); ?></a><?php endif; ?>
                             </div>
                         </li>
                         <li>
                             <div><i data-feather="mail"></i></div>
                             <div class="d-flex flex-column">
-                                <a href="mailto:info@arabiacode.com"><span class="">info@arabiacode.com</span></a>
-                                <a href="mailto:tarek.mandourr@gmail.com"><span class="">tarek.mandourr@gmail.com</span></a>
+                                <?php $ac_email = of_get_option( 'email', 'info@arabiacode.com' ); $ac_email2 = of_get_option( 'email2', 'tarek.mandourr@gmail.com' ); ?>
+                                <a href="mailto:<?php echo esc_attr( $ac_email ); ?>"><span><?php echo esc_html( $ac_email ); ?></span></a>
+                                <?php if ( $ac_email2 ) : ?><a href="mailto:<?php echo esc_attr( $ac_email2 ); ?>"><span><?php echo esc_html( $ac_email2 ); ?></span></a><?php endif; ?>
                             </div>
                         </li>
                     </ul>
