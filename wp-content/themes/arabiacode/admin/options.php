@@ -249,6 +249,7 @@ function optionsframework_options() {
 
 	$options[] = array( 'name' => __( 'Homepage Content', 'options_check' ), 'type' => 'heading' );
 	$options[] = array( 'name' => __( 'Hero Title', 'options_check' ), 'id' => 'hero_title', 'std' => 'حيث يصبح الحلم حقيقة', 'type' => 'text' );
+	$options[] = array( 'name' => __( 'Hero Background Image', 'options_check' ), 'id' => 'hero_background', 'type' => 'upload' );
 	$options[] = array( 'name' => __( 'Hero Description', 'options_check' ), 'id' => 'hero_description', 'std' => 'نساعدك على تقديم أفضل الخدمات التقنية لتحويل الفكرة والحلم إلى حقيقة، وعالم تقني مختلف ومميز. في Arabiacode، تبدأ جميع رحلاتنا بفكرة صغيرة وتكبر لتصبح واقعًا تعيشه وتأخذك إلى عالم التميز والنجاح والتطور.', 'type' => 'textarea' );
 	$options[] = array( 'name' => __( 'About Title', 'options_check' ), 'id' => 'about_title', 'std' => 'مؤسسة arabiacode', 'type' => 'text' );
 	$options[] = array( 'name' => __( 'About Description', 'options_check' ), 'id' => 'about_description', 'std' => 'تختص مؤسسة Arabiacode في تصميم وبرمجة المواقع وكذلك تقديم خدمات الاستضافات، بخدمات مبتكرة ومرنة تناسب احتياجات أصحاب الأعمال وأصحاب المواقع الشخصية.', 'type' => 'textarea' );
