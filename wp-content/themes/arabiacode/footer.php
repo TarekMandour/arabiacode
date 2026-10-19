@@ -38,10 +38,19 @@
                             <div class="row">
                                 <div class="col-6">
                                     <ul class="ps-0 mb-0">
-                                        <li class="mb-1 mb-md-3"><a href="<?php echo get_option('home').'/about-us'; ?>" class="vm_para footer_l f_l py-3">نبذة عنا</a></li>
-                                        <li class="my-1 my-md-3"><a href="<?php echo get_option('home').'/services'; ?>" class="vm_para footer_l f_l py-3">الخدمات</a></li>
-                                        <li class="mt-1 mt-md-3"><a href="#" class="vm_para footer_l f_l py-3">الشروط والاحكام</a></li>
-                                        <li class="my-1 my-md-3"><a href="<?php echo get_option('home').'/contact-us'; ?>" class="vm_para footer_l f_l py-3">تواصل معنا</a></li>
+                                        <?php
+                                        $ac_footer_pages = array(
+                                            array( 'slug' => 'about-us', 'fallback' => '/about-us/', 'label' => 'نبذة عنا', 'class' => 'mb-1 mb-md-3' ),
+                                            array( 'slug' => 'services', 'fallback' => '/services/', 'label' => 'الخدمات', 'class' => 'my-1 my-md-3' ),
+                                            array( 'slug' => 'terms-and-conditions', 'fallback' => '/terms-and-conditions/', 'label' => 'الشروط والأحكام', 'class' => 'mt-1 mt-md-3' ),
+                                            array( 'slug' => 'contact-us', 'fallback' => '/contact-us/', 'label' => 'تواصل معنا', 'class' => 'my-1 my-md-3' ),
+                                        );
+                                        foreach ( $ac_footer_pages as $ac_footer_page ) :
+                                            $ac_page = get_page_by_path( $ac_footer_page['slug'] );
+                                            $ac_page_url = $ac_page ? get_permalink( $ac_page ) : home_url( $ac_footer_page['fallback'] );
+                                        ?>
+                                        <li class="<?php echo esc_attr( $ac_footer_page['class'] ); ?>"><a href="<?php echo esc_url( $ac_page_url ); ?>" class="vm_para footer_l f_l py-3"><?php echo esc_html( $ac_footer_page['label'] ); ?></a></li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
                             </div>
