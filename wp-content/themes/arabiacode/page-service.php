@@ -6,7 +6,8 @@
 <?php get_header(); ?>
 
     <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb_wrap" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/breadcrumb/1.jpg')">
+    <?php $ac_breadcrumb = of_get_option( 'breadcrumb', get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>
+    <div class="breadcrumb_wrap" style="background-image: url('<?php echo esc_url( $ac_breadcrumb ? $ac_breadcrumb : get_template_directory_uri() . '/assets/images/breadcrumb/1.jpg' ); ?>')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
