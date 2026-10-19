@@ -42,6 +42,9 @@
                              <?php 
                                 global $wp;
                              ?>
+                            <?php if ( has_nav_menu( 'main' ) ) : ?>
+                            <?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => false, 'menu_class' => 'primary-menu nav nav-pills', 'fallback_cb' => false, 'depth' => 3 ) ); ?>
+                            <?php else : ?>
                             <ul class="primary-menu nav nav-pills">
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == '') { echo 'active'; } ?>" href="<?php echo get_option('home'); ?>">الرئيسية</a></li>
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'about-us') { echo 'active'; } ?>" href="<?php echo get_option('home').'/about-us'; ?>">نبذة عنا</a></li>
@@ -57,6 +60,7 @@
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'careers') { echo 'active'; } ?>" href="<?php echo get_option('home').'/careers'; ?>">التوظيف</a></li>
                                 <li class="nav-item"><a class="nav-link <?php if ($wp->request == 'contact-us') { echo 'active'; } ?>" href="<?php echo get_option('home').'/contact-us'; ?>">تواصل معنا</a></li>
                             </ul>
+                            <?php endif; ?>
                             <!-- End Mainmenu Nav -->
                         </nav>
                     </div>
@@ -93,6 +97,9 @@
                 </div>
                 <div class="menu__content mobile_menu_nav">
                     <!-- Navigation Menu -->
+                    <?php if ( has_nav_menu( 'mobile' ) ) : ?>
+                    <?php wp_nav_menu( array( 'theme_location' => 'mobile', 'container' => false, 'menu_class' => 'menu_list d-flex d-lg-none flex-column', 'fallback_cb' => false, 'depth' => 3 ) ); ?>
+                    <?php else : ?>
                     <ul class="menu_list d-flex d-lg-none flex-column">
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home'); ?>">الرئيسية</a></li>
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/about-us'; ?>">نبذة عنا</a></li>
@@ -108,6 +115,7 @@
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/careers'; ?>">التوظيف</a></li>
                         <li class="menu_list__item"><a class="menu_list__link" href="<?php echo get_option('home').'/contact-us'; ?>">تواصل معنا</a></li>
                     </ul>
+                    <?php endif; ?>
                     <!-- About Company -->
                     <ul class="address d-none d-lg-block">
                         <li>
