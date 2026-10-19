@@ -11,46 +11,98 @@ function disable_emojis_wp_head() {
 }
 add_action( 'init', 'disable_emojis_wp_head' );
 
-function handle_contact_form_submission() {
-    if( isset($_POST['action']) && $_POST['action'] === 'submit_contact_form' ) {
-        $name = sanitize_text_field( $_POST['name'] );
-        $email = sanitize_email( $_POST['email'] );
-        $phone = sanitize_text_field($_POST["phone"]);
-        $subject = sanitize_text_field($_POST["subject"]);
-        $message = "phone: ".$phone." | ". "email: ".$email." | ". "subject: ".$subject." | ". sanitize_textarea_field( $_POST['message'] );
-        $adminEmail = "info@arabiacode.com";
-
-        // Here, you can add your code to process the form data (e.g., send an email).
-        wp_mail($adminEmail, sprintf("New message from %s to Arabiacode", $name), $message);
-
-        // Redirect the user back to the main or contact page after form submission.
-        wp_redirect( home_url('/contact-us/?mailer=true') );
-    }
+function arabiacode_form_redirect( $path, $success ) {
+    $url = add_query_arg( 'mailer', $success ? 'true' : 'false', home_url( $path ) );
+    wp_safe_redirect( $url );
+    exit;
 }
 
+function arabiacode_form_admin_email() {
+    $configured_email = function_exists( 'of_get_option' ) ? of_get_option( 'email', get_option( 'admin_email' ) ) : get_option( 'admin_email' );
+    return is_email( $configured_email ) ? $configured_email : get_option( 'admin_email' );
+}
+
+function handle_contact_form_submission() {
+    if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+        arabiacode_form_redirect( '/contact-us/', false );
+    }
+
+    if ( ! isset( $_POST['contact_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['contact_form_nonce'] ) ), 'arabiacode_contact_form' ) ) {
+        arabiacode_form_redirect( '/contact-us/', false );
+    }
+
+    $name    = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
+    $email   = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+    $phone   = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
+    $subject = sanitize_text_field( wp_unslash( $_POST['subject'] ?? '' ) );
+    $message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+
+    if ( '' === $name || ! is_email( $email ) || '' === $phone || '' === $subject || '' === $message ) {
+        arabiacode_form_redirect( '/contact-us/', false );
+    }
+
+    $body = "Name: {$name}\nPhone: {$phone}\nEmail: {$email}\nSubject: {$subject}\n\n{$message}";
+    $sent = wp_mail( arabiacode_form_admin_email(), sprintf( 'Contact form: %s', $subject ), $body );
+
+    arabiacode_form_redirect( '/contact-us/', $sent );
+}
 add_action( 'admin_post_nopriv_submit_contact_form', 'handle_contact_form_submission' );
 add_action( 'admin_post_submit_contact_form', 'handle_contact_form_submission' );
 
 function handle_job_form_submission() {
-    if( isset($_POST['action']) && $_POST['action'] === 'submit_job_form' ) {
-        $name = sanitize_text_field( $_POST['name'] );
-        $email = sanitize_email( $_POST['email'] );
-        $phone = sanitize_text_field($_POST["phone"]);
-        $title = sanitize_text_field($_POST["title"]);
-        $message = "phone: ".$phone." | ". "email: ".$email." | ". "title: ".$title;
-        $adminEmail = "info@arabiacode.com";
-
-        // Here, you can add your code to process the form data (e.g., send an email).
-        wp_mail($adminEmail, sprintf("New message from %s to Arabiacode", $name), $message);
-
-        // Redirect the user back to the main or contact page after form submission.
-        wp_redirect( home_url('/careers/?mailer=true') );
+    if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+        arabiacode_form_redirect( '/careers/', false );
     }
-}
 
+    if ( ! isset( $_POST['job_form_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['job_form_nonce'] ) ), 'arabiacode_job_form' ) ) {
+        arabiacode_form_redirect( '/careers/', false );
+    }
+
+    $name  = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
+    $email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+    $phone = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
+    $title = sanitize_text_field( wp_unslash( $_POST['title'] ?? '' ) );
+
+    if ( '' === $name || ! is_email( $email ) || '' === $phone || '' === $title ) {
+        arabiacode_form_redirect( '/careers/', false );
+    }
+
+    $attachments = array();
+    if ( isset( $_FILES['file'] ) && UPLOAD_ERR_NO_FILE !== (int) $_FILES['file']['error'] ) {
+        $file = $_FILES['file'];
+        $max_size = 5 * 1024 * 1024;
+        $allowed_types = array(
+            'pdf'  => 'application/pdf',
+            'doc'  => 'application/msword',
+            'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        );
+
+        if ( UPLOAD_ERR_OK !== (int) $file['error'] || (int) $file['size'] > $max_size || (int) $file['size'] <= 0 ) {
+            arabiacode_form_redirect( '/careers/', false );
+        }
+
+        $checked_file = wp_check_filetype_and_ext( $file['tmp_name'], $file['name'], $allowed_types );
+        if ( empty( $checked_file['ext'] ) || ! isset( $allowed_types[ $checked_file['ext'] ] ) || ! is_uploaded_file( $file['tmp_name'] ) ) {
+            arabiacode_form_redirect( '/careers/', false );
+        }
+
+        // Attach the temporary upload directly; do not store CVs in a public uploads directory.
+        $attachments[] = $file['tmp_name'];
+    }
+
+    $body = "Name: {$name}\nPhone: {$phone}\nEmail: {$email}\nSpecialty: {$title}";
+    $sent = wp_mail(
+        arabiacode_form_admin_email(),
+        sprintf( 'Job application from %s', $name ),
+        $body,
+        array( 'Reply-To: ' . $name . ' <' . $email . '>' ),
+        $attachments
+    );
+
+    arabiacode_form_redirect( '/careers/', $sent );
+}
 add_action( 'admin_post_nopriv_submit_job_form', 'handle_job_form_submission' );
 add_action( 'admin_post_submit_job_form', 'handle_job_form_submission' );
-
 
 
 add_theme_support( 'title-tag' );
