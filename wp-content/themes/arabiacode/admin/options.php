@@ -240,5 +240,15 @@ function optionsframework_options() {
 		'std' => 'linkedin',
 		'type' => 'text');
 
+
+	$options[] = array( 'name' => __( 'Homepage Content', 'options_check' ), 'type' => 'heading' );
+	$options[] = array( 'name' => __( 'Hero Title', 'options_check' ), 'id' => 'hero_title', 'std' => 'حيث يصبح الحلم حقيقة', 'type' => 'text' );
+	$options[] = array( 'name' => __( 'Hero Description', 'options_check' ), 'id' => 'hero_description', 'std' => 'نساعدك على تقديم أفضل الخدمات التقنية لتحويل الفكرة والحلم إلى حقيقة، وعالم تقني مختلف ومميز. في Arabiacode، تبدأ جميع رحلاتنا بفكرة صغيرة وتكبر لتصبح واقعًا تعيشه وتأخذك إلى عالم التميز والنجاح والتطور.', 'type' => 'textarea' );
+	$options[] = array( 'name' => __( 'About Title', 'options_check' ), 'id' => 'about_title', 'std' => 'مؤسسة arabiacode', 'type' => 'text' );
+	$options[] = array( 'name' => __( 'About Description', 'options_check' ), 'id' => 'about_description', 'std' => 'تختص مؤسسة Arabiacode في تصميم وبرمجة المواقع وكذلك تقديم خدمات الاستضافات، بخدمات مبتكرة ومرنة تناسب احتياجات أصحاب الأعمال وأصحاب المواقع الشخصية.', 'type' => 'textarea' );
+	$options[] = array( 'name' => __( 'About Secondary Description', 'options_check' ), 'id' => 'about_description_2', 'std' => 'مؤسسة Arabiacode رائدة في عالم التقنية بفريق عمل متميز وخبرة تسعى لتوفير أحدث الحلول التقنية لتناسب احتياجات العملاء.', 'type' => 'textarea' );
+	$options[] = array( 'name' => __( 'Years of Experience', 'options_check' ), 'id' => 'years_experience', 'std' => '9+', 'type' => 'text' );
+	$options[] = array( 'name' => __( 'Customer Satisfaction', 'options_check' ), 'id' => 'customer_satisfaction', 'std' => '100%', 'type' => 'text' );
+
 	return $options;
 }
