@@ -150,6 +150,12 @@ function optionsframework_options() {
 		'type' => 'text');
 	
 	$options[] = array(
+		'name' => __('WhatsApp Number', 'options_check'),
+		'id' => 'whatsapp_number',
+		'std' => '201006287379',
+		'type' => 'text');
+
+	$options[] = array(
 		'name' => __('Phone 3', 'options_check'),
 		'id' => 'phone3',
 		'std' => 'phone',
