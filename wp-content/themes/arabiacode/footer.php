@@ -64,7 +64,8 @@
         </footer>
         <!-- End Footer -->
         
-        <a  class="whats-app" href="https://api.whatsapp.com/send?phone=+201006287379&text=اهلاArabiacode" target="_blank">
+        <?php $ac_whatsapp_number = preg_replace( '/[^0-9]/', '', of_get_option( 'whatsapp_number', '201006287379' ) ); ?>
+        <a class="whats-app" href="<?php echo esc_url( 'https://api.whatsapp.com/send?phone=' . $ac_whatsapp_number . '&text=' . rawurlencode( 'أهلاً Arabiacode' ) ); ?>" target="_blank" rel="noopener noreferrer">
             <img src="<?php bloginfo('template_directory'); ?>/assets/images/icons/whatsapp.webp" alt="Arabiacode" />
         </a>
 
